@@ -1,0 +1,26 @@
+{
+  "name": "program_stock",
+  "version": "1.0.0",
+  "description": "Program Untuk Mengatur Stock Secara Otomatis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd src/ && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ps08012002/Program_Stock.git"
+  },
+  "keywords": [
+    "stock"
+  ],
+  "author": "Putra Sangaji",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ps08012002/Program_Stock/issues"
+  },
+  "homepage": "https://github.com/ps08012002/Program_Stock#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
