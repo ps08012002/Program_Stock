@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ps08012002/Program_Stock/issues"
   },
-  "homepage": "https://github.com/ps08012002/Program_Stock#readme"
+  "homepage": "https://github.com/ps08012002/Program_Stock#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
