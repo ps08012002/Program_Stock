@@ -67,6 +67,19 @@ app.put("/warna", async(req, res) => { // Update Quantity by id
   }
 })
 
+app.delete("/warna", async(req, res) => { // Deleted Warna & Quantity by id
+  try {
+    const {id} = req.body 
+    console.log("req.body", req.body);
+    await db.tb_warna.delete({where: {id : id}}) 
+    res.send ("Sukses")
+  } catch (error) {
+      console.log("error", error);
+    
+     res.status(500).send({"internal server error": error})
+  }
+})
+
 app.get('/warna/:id', async (req, res) => { // Get All Data
   try {
     const {id} = req.params
