@@ -7,7 +7,7 @@ app.use(express.json())
 
 app.get('/kode', async (req, res) => { // Get All Data
   try {
-    const test = await (await db.tb_kode.findMany())
+    const test = await db.tb_kode.findMany()
     res.send({"data": test})
   } catch (error) {
     res.status(500).send("internal server error")
@@ -67,6 +67,45 @@ app.put("/warna", async(req, res) => { // Update Quantity by id
   }
 })
 
+app.get('/warna/:id', async (req, res) => { // Get All Data
+  try {
+    const {id} = req.params
+    const result = await db.tb_warna.findMany({where : {id_kode : parseInt(id) }})
+    res.send({result:result})
+  } catch (error) {
+    res.status(500).send("internal server error")
+  }
+})
+
+app.get("/minus", async(req, res) => { // Minus Quantity by id
+  try {
+    const {id, qty} = req.query 
+    console.log("req", req.query);
+    const minus = await db.tb_warna.findFirst({where : {id : parseInt(id)}})
+    if (minus.quantity !== 0) {
+     const result = await db.tb_warna.update({where : {id : parseInt(id)}, data : {quantity : minus.quantity - parseInt(qty)}})
+     res.send ({result})
+    }
+  } catch (error) {
+      console.log("error", error);
+    
+     res.status(500).send({"internal server error": error})
+  }
+})
+
+app.get("/plus", async(req, res) => { // Plus Quantity by id
+  try {
+    const {id, qty} = req.query 
+    console.log("req", req.query);
+    const plus = await db.tb_warna.findFirst({where : {id : parseInt(id)}})
+    const result = await db.tb_warna.update({where : {id : parseInt(id)}, data : {quantity : plus.quantity + parseInt(qty)}})
+    res.send ({result})
+  } catch (error) {
+      console.log("error", error);
+    
+     res.status(500).send({"internal server error": error})
+  }
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
