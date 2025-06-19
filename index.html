@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="">
+        <title>Website Update Stock</title>
+
+        <!--CSS-->
+        <style>
+            html, body{
+                margin: 0;
+                font-family:'Times New Roman', Times, serif;
+                background-color: rgb(233, 99, 99);
+                height: 100%;
+            }
+
+            nav {
+                display: flex;
+                margin: 10px;
+                padding-right: 15px;
+                padding-left: 10px;
+                width: auto;
+                max-width: 100%;
+                justify-content: space-between;
+                align-items: center;
+                color: black;
+                background-color: bisque;
+                border-radius: 10px;
+            }
+
+            .navigate img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .form-container {
+                width: 500px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                border: 1px solid black;
+                border-radius: 10px;
+                background-color: #f9f9f94d;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                margin-top: 100px;
+                margin-bottom: 150px;
+                justify-self: center;
+            }
+
+            .form-container h2 {
+                align-self: center;
+                font-size: 30px;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            label {
+                display: flex;
+                font-size: 15px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            select {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 100%;
+                padding: 10px 12px;
+                border: 1px solid gray;
+                border-radius: 10px;
+                outline: none;
+            }
+
+            option {
+                border: none;
+                border-radius: 10px;
+            }
+
+            input {
+                width: 95%;
+                padding: 10px 12px;
+                border: 1px solid gray;
+                border-radius: 10px;
+            }
+
+            select:focus, input:focus {
+                border-color: #eb22a1;
+            }
+
+            button {
+                width: 150px;
+                padding: 10px 12px;
+                margin-bottom: 20px;
+                align-self: center;
+                border-radius: 10px;
+                border: none;
+                background-color: rgb(255, 255, 255);
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #eb22a1;
+            }
+
+            #copyright {
+                width: 100%;
+                justify-items: center;
+            }
+        </style>
+
+    </head>
+
+    <!--HTML-->
+    <body>
+        <header>
+            <nav class="navigate">
+                    <img class="lt-menu" src="assets/kelompok2.png" alt="">
+                    <ul class="ct-menu">
+                        <il><a href="">Daftar Kelompok</a></il>
+                    </ul>
+            </nav>
+        </header>
+
+
+        <div id="main">
+            <div class="wrapper">
+                <div class="form-container">
+                    <h2>Update Stock</h2>
+                    <div class="form-group">
+                        <label for="printer">Printer</label>
+                        <select id="printerType">
+                            <option value="">Select printer type</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="inkColor">Ink Color</label>
+                        <select id="inkColor">
+                            <option value="">Select printer type first</option>
+                        </select>
+                    </div>
+                        <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" value="1" min="1" />
+                    </div>
+                    <button onClick="updateStock()">Update Stock</button>
+                </div>
+            </div>
+        </div> 
+        <div id="copyright">
+            <div className="wrapper">
+                &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
+            </div>
+        </div>
+    </body>
+
+    <!--JavaScript-->
+
+</html>
