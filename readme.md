@@ -32,6 +32,10 @@
 ```bash 
     nvm install lts
 ```
+- Gunakan versi NodeJS via cmd as **Administrator** dengan command :
+```bash 
+    npm use 22.16.0
+```
 - Cek instalasi NodeJS via cmd as **Administrator** dengan command :
 ```bash 
     npm --version
