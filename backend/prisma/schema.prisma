@@ -16,8 +16,8 @@ model tb_kode {
 model tb_warna {
   id       Int     @id @default(autoincrement())
   warna    String  @db.VarChar(10)
-  quantity Int?
-  id_kode  Int
+  quantity Int @default(0)
+  id_kode  Int  
 
   tb_kode  tb_kode @relation(fields: [id_kode], references: [id], onDelete: Restrict, onUpdate: Cascade)
 
