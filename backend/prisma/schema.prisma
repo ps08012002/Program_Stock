@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model tb_kode {
+  id         Int        @id @default(autoincrement())
+  kode_tinta String     @db.VarChar(10)
+  tb_warna   tb_warna[]
+}
+
+model tb_warna {
+  id       Int     @id @default(autoincrement())
+  warna    String  @db.VarChar(10)
+  quantity Int?
+  id_kode  Int
+
+  tb_kode  tb_kode @relation(fields: [id_kode], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  @@index([id_kode], name: "tb_warna_id_kode_index")
+}
