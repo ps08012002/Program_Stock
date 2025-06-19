@@ -24,8 +24,7 @@ https://git-scm.com/downloads/win
 ```
 
 ### 2. Instalasi NVM
-- Download & Install NVM :
-https://github.com/coreybutler/nvm-windows/releases/download/1.2.2/nvm-setup.exe
+- Download & Install NVM : <br>https://github.com/coreybutler/nvm-windows/releases/download/1.2.2/nvm-setup.exe
 - Cek Instalasi NVM via CMD as **Administrator** dengan command : 
 ```bash 
     nvm --version
