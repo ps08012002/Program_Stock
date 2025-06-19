@@ -52,5 +52,20 @@
 ```bash 
     npm install
 ```
+### 3. Create Database
+- Download dan instal MYSQL : <br>https://dev.mysql.com/downloads/file/?id=541637
+- Rename file didalam **/backend/.env.example** menjadi **.env**
+- Rubah isi didalam file sesuai petunjuk
+- Ketikkan command :
+```bash 
+    npx prisma db push
+```
 
+## 🚀 Starting Program
+- Ketikkan command :
+```bash 
+    cd /backend
+
+    npm start
+```
 ### Built with ❤️ by Kelompoke Arek Arek
