@@ -7,8 +7,7 @@
 ## 🏁 Getting Started
 
 ### 1. Install GIT
-- Download & Install GIT : 
-https://git-scm.com/downloads/win
+- Download & Install GIT : <br>https://git-scm.com/downloads/win
 - Cek Instalasi GIT via CMD dengan command : 
 ```bash 
     git --version
