@@ -64,7 +64,7 @@
 ## 🚀 Starting Program
 - Ketikkan command :
 ```bash 
-    cd /backend
+    cd backend
 
     npm start
 ```
