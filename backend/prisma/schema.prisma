@@ -23,3 +23,14 @@ model tb_warna {
 
   @@index([id_kode], name: "tb_warna_id_kode_index")
 }
+
+model tb_report {
+  id       Int     @id @default(autoincrement())
+  nama    String  @db.VarChar(10)
+  kode_tinta String @db.VarChar(10)
+  warna  String @db.VarChar(10)  
+  divisi String @db.VarChar(10)  
+  request Int @default(0)
+  sisa Int @default(0)
+  date Int @default(0)
+}
