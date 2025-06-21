@@ -92,9 +92,9 @@ app.get('/warna/:id', async (req, res) => { // Get All Data
 
 app.post("/minus/:divisi", async(req, res) => { // minus stock by id and create report data
   try {
- const id = req.body.id; // asumsi dikirim via body
+ const id = req.body.id;
   const qty = parseInt(req.body.qty);
-  const divisi = req.params.divisi; // hanya ini dari URL
+  const divisi = req.params.divisi; 
 
   const cari = await db.tb_warna.findFirst({
     where: { id: parseInt(id) },
