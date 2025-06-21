@@ -117,7 +117,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id_kode\":27, \"warna\" : \"Yellow\"\r\n}",
+							"raw": "{\r\n    \"id_kode\":1, \"warna\" : \"Yellow\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -145,7 +145,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\":27, \"quantity\" : 2\r\n}",
+							"raw": "{\r\n    \"id\":1, \"quantity\" : 10\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -197,47 +197,6 @@
 			]
 		},
 		{
-			"name": "Minus quantity",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/minus?id=2&qty=2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"minus"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "2"
-						},
-						{
-							"key": "qty",
-							"value": "2"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Plus quantity",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -273,6 +232,35 @@
 							"key": "qty",
 							"value": "2"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Minus quantity and create report",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n  \"id\": 1, \"nama\": \"Putra\", \"kode_tinta\": \"001\", \"qty\": 2\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/minus/IT",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"minus",
+						"IT"
 					]
 				}
 			},
