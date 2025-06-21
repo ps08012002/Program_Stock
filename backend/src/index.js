@@ -90,21 +90,71 @@ app.get('/warna/:id', async (req, res) => { // Get All Data
   }
 })
 
-app.get("/minus", async(req, res) => { // Minus Quantity by id
+app.post("/minus/:divisi", async(req, res) => { // minus stock by id and create report data
   try {
-    const {id, qty} = req.query 
-    console.log("req", req.query);
-    const minus = await db.tb_warna.findFirst({where : {id : parseInt(id)}})
-    if (minus.quantity !== 0) {
-     const result = await db.tb_warna.update({where : {id : parseInt(id)}, data : {quantity : minus.quantity - parseInt(qty)}})
-     res.send ({result})
+ const id = req.body.id; // asumsi dikirim via body
+  const qty = parseInt(req.body.qty);
+  const divisi = req.params.divisi; // hanya ini dari URL
+
+  const cari = await db.tb_warna.findFirst({
+    where: { id: parseInt(id) },
+    select: {
+      id: true,
+      warna: true,
+      quantity: true
     }
+  });
+
+  if (!cari) {
+    return res.status(404).send("Data tidak ditemukan");
+  }
+
+  if (cari.quantity !== 0 && cari.quantity >= qty) {
+    const result = await db.tb_warna.update({
+      where: { id: cari.id },
+      data: {
+        quantity: cari.quantity - qty
+      }
+    });
+
+    await db.tb_report.create({
+      data: {
+        nama: req.body.nama,
+        divisi: divisi, // ambil dari URL
+        kode_tinta: req.body.kode_tinta,
+        warna: cari.warna,
+        request: qty,
+        sisa: result.quantity,
+        date: Math.floor(Date.now() / 1000)
+      }
+    });
+
+    res.send("sukses");
+  } else {
+    res.status(400).send("Stok tidak mencukupi atau kosong");
+  }
   } catch (error) {
-      console.log("error", error);
+    console.log("error", error);
     
      res.status(500).send({"internal server error": error})
   }
 })
+
+// app.get("/minus", async(req, res) => { // Minus Quantity by id
+//   try {
+//     const {id, qty} = req.query 
+//     console.log("req", req.query);
+//     const minus = await db.tb_warna.findFirst({where : {id : parseInt(id)}})
+//     if (minus.quantity !== 0) {
+//      const result = await db.tb_warna.update({where : {id : parseInt(id)}, data : {quantity : minus.quantity - parseInt(qty)}})
+//      res.send ({result})
+//     }
+//   } catch (error) {
+//       console.log("error", error);
+    
+//      res.status(500).send({"internal server error": error})
+//   }
+// })
 
 app.get("/plus", async(req, res) => { // Plus Quantity by id
   try {
