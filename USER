@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: rgb(233, 99, 99);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-container {
+      width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      background: transparent;
+      font-size: 14px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #e91e63;
+    }
+
+    .form-inline {
+      display: flex;
+      gap: 10px;
+    }
+
+    .form-inline input {
+      flex: 1;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    button {
+      width: 150px;
+      padding: 12px;
+      background-color: #e91e63;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    #copyright {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+      background-color: white;
+      color: #333;
+      font-size: 14px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>From IT Stocks</h2>
+
+    <div class="form-group">
+      <input type="text" id="userName" placeholder="Enter name" />
+    </div>
+
+    <div class="form-group">
+      <select id="printerType">
+        <option value="">Select a type</option>
+        <option>Printer</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <select id="inkColor">
+        <option value="">Select ink color</option>
+        <option>Cyan</option>
+        <option>Magenta</option>
+        <option>Yellow</option>
+        <option>Black</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input type="number" id="quantity" value="1" min="1" />
+    </div>
+    
+    <div class="form-group form-inline">
+      <input type="date" id="date" value="2025-06-18" />
+      <input type="time" id="time" value="19:48" />
+    </div>
+
+    <div class="btn-container">
+      <button onclick="sendwhatsapp()">Submit</button>
+    </div>
+  </div>
+
+  <div id="copyright">
+    <div class="wrapper">
+      &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
+    </div>
+  </div>
+
+  <script>
+    function sendwhatsapp() {
+      const phonenumber = "+62895401473163";
+
+      const name = document.getElementById('userName').value;
+      const printer = document.getElementById('printerType').value;
+      const inkColor = document.getElementById('inkColor').value;
+      const quantity = document.getElementById('quantity').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      if (!name || !printer || !inkColor || !quantity || !date || !time) {
+        alert("Please fill out all fields before sending.");
+        return;
+      }
+
+      const url = `https://wa.me/${phonenumber}?text=` +
+        `*Name:* ${name}%0a` +
+        `*Type:* ${printer}%0a` +
+        `*Ink Color:* ${inkColor}%0a` +
+        `*Quantity:* ${quantity}%0a` +
+        `*Date:* ${date}%0a` +
+        `*Time:* ${time}`;
+
+      window.open(url, '_blank').focus();
+    }
+  </script>
+
+</body>
+</html>

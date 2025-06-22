@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Kelompok</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 600px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+
+    .member {
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .member img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #000;
+      margin-right: 15px;
+    }
+
+    .member-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .member-info .name {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .member-info .npm {
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Daftar Kelompok</h1>
+
+    <div class="member">
+      <img src="foto/gilang.jpg" alt="Profil Gilang" />
+      <div class="member-info">
+        <div class="name">Gilang Permana Nanda Putra</div>
+        <div class="npm">06.2024.1.07849</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <img src="foto/putra.jpg" alt="Profil Putra" />
+      <div class="member-info">
+        <div class="name">Putra Sangaji</div>
+        <div class="npm">06.2024.1.07750</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <img src="Zhidanahsan.jpeg" alt="Profil Zaim" />
+      <div class="member-info">
+        <div class="name">Muhammad Zhidanahsan Zaim</div>
+        <div class="npm">06.2024.1.07754</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <img src="foto/ghofar.jpg" alt="Profil Ghofar" />
+      <div class="member-info">
+        <div class="name">Mohammad Ghofar</div>
+        <div class="npm">06.2024.1.07783</div>
+      </div>
+    </div>
+
+    <div class="member">
+      <img src="foto/indra.jpg" alt="Profil Indra" />
+      <div class="member-info">
+        <div class="name">Indra Tria Andhika</div>
+        <div class="npm">06.2024.1.07756</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
