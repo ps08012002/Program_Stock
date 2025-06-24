@@ -26,7 +26,7 @@ model tb_warna {
 
 model tb_report {
   id       Int     @id @default(autoincrement())
-  nama    String  @db.VarChar(10)
+  nama    String  @db.Text
   kode_tinta String @db.VarChar(10)
   warna  String @db.VarChar(10)  
   divisi String @db.VarChar(10)  

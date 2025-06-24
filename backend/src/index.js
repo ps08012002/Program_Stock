@@ -1,9 +1,17 @@
 import express from "express"
 import db from "./database.js"
+import cors from "cors"
 const app = express()
 const port = 3000
 
+const corsOptions = {
+      origin: '*',
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    };
+    app.use(cors(corsOptions));
+
 app.use(express.json())
+
 
 app.get('/kode', async (req, res) => { // Get All Data
   try {
@@ -90,11 +98,10 @@ app.get('/warna/:id', async (req, res) => { // Get All Data
   }
 })
 
-app.post("/minus/:divisi", async(req, res) => { // minus stock by id and create report data
+app.post("/minus", async(req, res) => { // minus stock by id and create report data
   try {
  const id = req.body.id;
-  const qty = parseInt(req.body.qty);
-  const divisi = req.params.divisi; 
+  const qty = parseInt(req.body.qty); 
 
   const cari = await db.tb_warna.findFirst({
     where: { id: parseInt(id) },
@@ -120,7 +127,7 @@ app.post("/minus/:divisi", async(req, res) => { // minus stock by id and create 
     await db.tb_report.create({
       data: {
         nama: req.body.nama,
-        divisi: divisi, // ambil dari URL
+        divisi: req.body.divisi, 
         kode_tinta: req.body.kode_tinta,
         warna: cari.warna,
         request: qty,
