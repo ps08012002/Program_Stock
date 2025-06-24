@@ -57,6 +57,7 @@ quantity.addEventListener('change' ,()=>{
 })
 
 
+//send report adn minus quantity
 console.log(getParameterByName('divisi'));
 
 async function onSubmit() {
@@ -123,7 +124,7 @@ inkTypeSelect.addEventListener('change', async function () {
     try {
         const res = await fetch(`http://localhost:3000/warna/${idKode}`);
         const json = await res.json();
-        warnaList = json.result; // 🛠️ perbaikan di sini!
+        warnaList = json.result; 
 
         inkColorSelect.innerHTML = '<option value="">Select ink color</option>';
         warnaList.forEach(warna => {
@@ -137,35 +138,6 @@ inkTypeSelect.addEventListener('change', async function () {
         inkColorSelect.innerHTML = '<option value="">Failed to load</option>';
     }
 });
-
-// 3. Update Stock
-async function updateStock() {
-    const idWarna = inkColorSelect.value;
-    const qty = parseInt(quantityInput.value);
-
-    if (!idWarna || isNaN(qty) || qty <= 0) {
-        alert('Mohon pilih warna tinta dan isi jumlah yang valid.');
-        return;
-    }
-
-    try {
-        const res = await fetch('http://localhost:3000/warna', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id: parseInt(idWarna), quantity: qty }),
-        });
-
-        if (res.ok) {
-            alert('Stock berhasil diupdate!');
-        } else {
-            alert('Gagal mengupdate stock.');
-        }
-    } catch (err) {
-        console.error('Error saat update stock:', err);
-    }
-}
 
 function sendwhatsapp() {
       const phonenumber = "+62895401473163";
@@ -193,5 +165,30 @@ function sendwhatsapp() {
       window.open(url, '_blank').focus();
     }
 
+    function sendwhatsapp() {
+      const phonenumber = "+62895401473163";
+
+      const name = document.getElementById('userName').value;
+      const printer = document.getElementById('printerType').value;
+      const inkColor = document.getElementById('inkColor').value;
+      const quantity = document.getElementById('quantity').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
+
+      if (!name || !printer || !inkColor || !quantity || !date || !time) {
+        alert("Please fill out all fields before sending.");
+        return;
+      }
+
+      const url = `https://wa.me/${phonenumber}?text=` +
+        `*Name:* ${name}%0a` +
+        `*Type:* ${printer}%0a` +
+        `*Ink Color:* ${inkColor}%0a` +
+        `*Quantity:* ${quantity}%0a` +
+        `*Date:* ${date}%0a` +
+        `*Time:* ${time}`;
+
+      window.open(url, '_blank').focus();
+    }
 // Jalankan saat halaman dimuat
 window.onload = loadInkTypes;
