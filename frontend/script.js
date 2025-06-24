@@ -79,31 +79,5 @@ async function updateStock() {
     }
 }
 
-function sendwhatsapp() {
-      const phonenumber = "+62895401473163";
-
-      const name = document.getElementById('userName').value;
-      const printer = document.getElementById('printerType').value;
-      const inkColor = document.getElementById('inkColor').value;
-      const quantity = document.getElementById('quantity').value;
-      const date = document.getElementById('date').value;
-      const time = document.getElementById('time').value;
-
-      if (!name || !printer || !inkColor || !quantity || !date || !time) {
-        alert("Please fill out all fields before sending.");
-        return;
-      }
-
-      const url = `https://wa.me/${phonenumber}?text=` +
-        `*Name:* ${name}%0a` +
-        `*Type:* ${printer}%0a` +
-        `*Ink Color:* ${inkColor}%0a` +
-        `*Quantity:* ${quantity}%0a` +
-        `*Date:* ${date}%0a` +
-        `*Time:* ${time}`;
-
-      window.open(url, '_blank').focus();
-    }
-
 // Jalankan saat halaman dimuat
 window.onload = loadInkTypes;
