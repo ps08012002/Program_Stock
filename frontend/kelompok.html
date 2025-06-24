@@ -1,105 +1,146 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daftar Kelompok</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      margin: 0;
-      padding: 30px;
-      display: flex;
-      justify-content: center;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Kelompok</title>
+    <style>
+      html, body{
+        margin: 0;
+        font-family:'Times New Roman', Times, serif;
+        background-color: rgb(233, 99, 99);
+        height: 100%;
+      }
 
-    .container {
-      max-width: 600px;
-      width: 100%;
-    }
+      nav {
+        display: flex;
+        margin: 10px;
+        padding-right: 15px;
+        padding-left: 10px;
+        width: auto;
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        color: black;
+        background-color: bisque;
+        border-radius: 10px;
+      }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 40px;
-      font-size: 32px;
-    }
+      .navigate img {
+        width: 40px;
+        height: 40px;
+      }
 
-    .member {
-      display: flex;
-      align-items: center;
-      margin-bottom: 25px;
-    }
+      .container {
+        max-width: 600px;
+        width: 100%;
+        justify-self: center;
+        align-content: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
 
-    .member img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #000;
-      margin-right: 15px;
-    }
+      h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 32px;
+      }
 
-    .member-info {
-      display: flex;
-      flex-direction: column;
-    }
+      .member {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+      }
 
-    .member-info .name {
-      font-weight: bold;
-      font-size: 18px;
-    }
+      .member img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #000;
+        margin-right: 15px;
+      }
 
-    .member-info .npm {
-      font-size: 14px;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Daftar Kelompok</h1>
+      .member-info {
+        display: flex;
+        flex-direction: column;
+      }
 
-    <div class="member">
-      <img src="foto/gilang.jpg" alt="Profil Gilang" />
-      <div class="member-info">
-        <div class="name">Gilang Permana Nanda Putra</div>
-        <div class="npm">06.2024.1.07849</div>
+      .member-info .name {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .member-info .npm {
+        font-size: 14px;
+        color: #555;
+      }
+
+      #copyright {
+        width: 100%;
+        justify-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navigate">
+        <a href="index.html">
+          <img class="lt-menu" src="assets/kelompok2.png" alt="">
+        </a>
+          <ul class="ct-menu">
+              <il><a href="kelompok.html">Daftar Kelompok</a></li>
+          </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Daftar Kelompok</h1>
+
+      <div class="member">
+        <img src="assets/Foto_Gilang.png" alt="Profil Gilang" />
+        <div class="member-info">
+          <div class="name">Gilang Permana Nanda Putra</div>
+          <div class="npm">06.2024.1.07849</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="assets/Foto_Putra.jpg" alt="Profil Putra" />
+        <div class="member-info">
+          <div class="name">Putra Sangaji</div>
+          <div class="npm">06.2024.1.07750</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="assets/Foto_Zhidan.jpg" alt="Profil Zaim" />
+        <div class="member-info">
+          <div class="name">Muhammad Zhidanahsan Zaim</div>
+          <div class="npm">06.2024.1.07754</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="assets/Foto_Ghofar.jpg" alt="Profil Ghofar" />
+        <div class="member-info">
+          <div class="name">Mohammad Ghofar</div>
+          <div class="npm">06.2024.1.07783</div>
+        </div>
+      </div>
+
+      <div class="member">
+        <img src="assets/Foto_Indra.jpg" alt="Profil Indra" />
+        <div class="member-info">
+          <div class="name">Indra Tria Andhika</div>
+          <div class="npm">06.2024.1.07756</div>
+        </div>
       </div>
     </div>
-
-    <div class="member">
-      <img src="foto/putra.jpg" alt="Profil Putra" />
-      <div class="member-info">
-        <div class="name">Putra Sangaji</div>
-        <div class="npm">06.2024.1.07750</div>
+    <div id="copyright">
+      <div class="wrapper">
+          &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
       </div>
     </div>
-
-    <div class="member">
-      <img src="Zhidanahsan.jpeg" alt="Profil Zaim" />
-      <div class="member-info">
-        <div class="name">Muhammad Zhidanahsan Zaim</div>
-        <div class="npm">06.2024.1.07754</div>
-      </div>
-    </div>
-
-    <div class="member">
-      <img src="foto/ghofar.jpg" alt="Profil Ghofar" />
-      <div class="member-info">
-        <div class="name">Mohammad Ghofar</div>
-        <div class="npm">06.2024.1.07783</div>
-      </div>
-    </div>
-
-    <div class="member">
-      <img src="foto/indra.jpg" alt="Profil Indra" />
-      <div class="member-info">
-        <div class="name">Indra Tria Andhika</div>
-        <div class="npm">06.2024.1.07756</div>
-      </div>
-    </div>
-
-  </div>
-</body>
+  </body>
 </html>
