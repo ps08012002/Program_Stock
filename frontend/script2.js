@@ -1,6 +1,93 @@
-const inkTypeSelect = document.getElementById('inkType');
-const inkColorSelect = document.getElementById('inkColor');
+const inkTypeSelect = document.getElementById('InkTypeUser');
+const inkColorSelect = document.getElementById('inkColorUser');
 const quantityInput = document.getElementById('quantity');
+const userName = document.getElementById('userName');
+
+function getParameterByName(name) {
+  const url = window.location.search;
+  name = name.replace(/[\[\]]/g, "\\$&");
+
+  let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+  let results = regex.exec(url);
+
+  if (!results) {
+    return null;
+  }
+
+  if (!results[2]) {
+    return "";
+  }
+
+  return decodeURIComponent(results[2]);
+}
+
+const date = new Date()
+
+
+const formatDate = new Intl.DateTimeFormat("en-GB", {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  timeZone: "Asia/Jakarta"
+}).format(date);
+
+const timefrotma = new Intl.DateTimeFormat("en-GB", {
+    hour: "numeric",
+  minute: "numeric",
+  timeZone: "Asia/Jakarta"
+}).format(date);
+
+document.getElementById("dateUser").value = formatDate;
+document.getElementById("timeUser").value = timefrotma;
+console.log(document.getElementById("dateUser").value);
+console.log(formatDate);
+
+userName.addEventListener('change' ,()=>{
+    console.log(this.event.target.value);
+
+    userName.value =this.event.target.value
+    
+})
+
+quantity.addEventListener('change' ,()=>{
+    console.log(this.event.target.value);
+
+    quantity.value =this.event.target.value
+    
+})
+
+
+console.log(getParameterByName('divisi'));
+
+async function onSubmit() {
+  const divisi = getParameterByName("divisi");
+  const raw = JSON.stringify({
+  "id": inkTypeSelect.value,
+  "nama": userName.value,
+  "kode_tinta": inkColorSelect.value,
+  "qty": quantity.value,
+  "divisi": divisi
+});
+
+console.log(raw);
+
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
+ const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("http://localhost:3000/minus", requestOptions)
+  .then((response) => {if(response.ok) alert("Permintaan Akan Segera Diproses")})
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+  
+}
+
 
 let warnaList = [];
 
@@ -25,6 +112,7 @@ async function loadInkTypes() {
 // 2. Ketika Ink Type berubah
 inkTypeSelect.addEventListener('change', async function () {
     const idKode = this.value;
+    inkTypeSelect.value = this.value
     inkColorSelect.innerHTML = '<option value="">Loading...</option>';
 
     if (!idKode) {

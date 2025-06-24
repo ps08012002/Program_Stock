@@ -101,20 +101,15 @@
     </div>
 
     <div class="form-group">
-      <select id="printerType">
-        <option value="">Select a type</option>
-        <option>Printer</option>
+      <select id="InkTypeUser">
+        <option value="">Select ink type</option>
       </select>
     </div>
 
     <div class="form-group">
-      <select id="inkColor">
-        <option value="">Select ink color</option>
-        <option>Cyan</option>
-        <option>Magenta</option>
-        <option>Yellow</option>
-        <option>Black</option>
-      </select>
+        <select id="inkColorUser">
+          <option value="">Select ink type</option>
+        </select>
     </div>
 
     <div class="form-group">
@@ -122,12 +117,12 @@
     </div>
     
     <div class="form-group form-inline">
-      <input type="date" id="date" value="2025-06-18" />
-      <input type="time" id="time" value="19:48" />
+      <input id="dateUser" value=""/>
+      <input  id="timeUser" value="" />
     </div>
 
     <div class="btn-container">
-      <button onclick="sendwhatsapp()">Submit</button>
+      <button onclick="onSubmit();">Submit</button>
     </div>
   </div>
 
@@ -137,33 +132,57 @@
     </div>
   </div>
 
-  <script>
-    function sendwhatsapp() {
-      const phonenumber = "+62895401473163";
+  <script src="script2.js">
+      
 
-      const name = document.getElementById('userName').value;
-      const printer = document.getElementById('printerType').value;
-      const inkColor = document.getElementById('inkColor').value;
-      const quantity = document.getElementById('quantity').value;
-      const date = document.getElementById('date').value;
-      const time = document.getElementById('time').value;
+//     (()=> {
+//       const inkTypeSelect = document.getElementById("InkTypeUser")
+      
+//       const inkColorSelect = document.getElementById("inkColorSelect")
+//     async function loadInkTypes() {
+//     try {
+//         const res = await fetch('http://localhost:3000/kode');
+//         const json = await res.json();
+//         const inkTypes = json.data;
 
-      if (!name || !printer || !inkColor || !quantity || !date || !time) {
-        alert("Please fill out all fields before sending.");
-        return;
-      }
+//         inkTypes.forEach(kode => {
+//             const option = document.createElement('option');
+//             option.value = kode.id;
+//             option.textContent = kode.kode_tinta;
+//             inkTypeSelect.appendChild(option);
+//         });
+//     } catch (err) {
+//         console.error('Gagal mengambil kode tinta:', err);
+//     }
+// } loadInkTypes ()
 
-      const url = `https://wa.me/${phonenumber}?text=` +
-        `*Name:* ${name}%0a` +
-        `*Type:* ${printer}%0a` +
-        `*Ink Color:* ${inkColor}%0a` +
-        `*Quantity:* ${quantity}%0a` +
-        `*Date:* ${date}%0a` +
-        `*Time:* ${time}`;
+// inkTypeSelect.addEventListener('change', async function () {
+//     const idKode = this.value;
+//     inkColorSelect.innerHTML = '<option value="">Loading...</option>';
 
-      window.open(url, '_blank').focus();
-    }
+//     if (!idKode) {
+//         inkColorSelect.innerHTML = '<option value="">Select ink type first</option>';
+//         return;
+//     }
+
+//     try {
+//         const res = await fetch(`http://localhost:3000/warna/${idKode}`);
+//         const json = await res.json();
+//         warnaList = json.result; // 🛠️ perbaikan di sini!
+
+//         inkColorSelect.innerHTML = '<option value="">Select ink color</option>';
+//         warnaList.forEach(warna => {
+//             const option = document.createElement('option');
+//             option.value = warna.id;
+//             option.textContent = warna.warna;
+//             inkColorSelect.appendChild(option);
+//         });
+//     } catch (err) {
+//         console.error('Gagal mengambil warna:', err);
+//         inkColorSelect.innerHTML = '<option value="">Failed to load</option>';
+//     }
+// });
+//     })()
   </script>
-
 </body>
 </html>
