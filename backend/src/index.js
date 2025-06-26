@@ -147,22 +147,6 @@ app.post("/minus", async(req, res) => { // minus stock by id and create report d
   }
 })
 
-// app.get("/minus", async(req, res) => { // Minus Quantity by id
-//   try {
-//     const {id, qty} = req.query 
-//     console.log("req", req.query);
-//     const minus = await db.tb_warna.findFirst({where : {id : parseInt(id)}})
-//     if (minus.quantity !== 0) {
-//      const result = await db.tb_warna.update({where : {id : parseInt(id)}, data : {quantity : minus.quantity - parseInt(qty)}})
-//      res.send ({result})
-//     }
-//   } catch (error) {
-//       console.log("error", error);
-    
-//      res.status(500).send({"internal server error": error})
-//   }
-// })
-
 app.get("/plus", async(req, res) => { // Plus Quantity by id
   try {
     const {id, qty} = req.query 
@@ -177,39 +161,39 @@ app.get("/plus", async(req, res) => { // Plus Quantity by id
   }
 })
 
-app.get("/ink", async (req, res) => {
-  try {
-    const data = await db.tb_kode.findMany({
-      include: {
-        tb_warna: true
-      }
-    })
-    res.send(data)
-  } catch (error) {
-    console.log("error", error)
-    res.status(500).send({"internal server error": error})
-  }
-})
+// app.get("/ink", async (req, res) => {
+//   try {
+//     const data = await db.tb_kode.findMany({
+//       include: {
+//         tb_warna: true
+//       }
+//     })
+//     res.send(data)
+//   } catch (error) {
+//     console.log("error", error)
+//     res.status(500).send({"internal server error": error})
+//   }
+// })
 
-app.post("/warna/default/:id_kode", async (req, res) => { 
-  try {
-    const id_kode = parseInt(req.params.id_kode);
-    const warnaCMYK = ["Cyan", "Magenta", "Yellow", "Black"];
+// app.post("/warna/default/:id_kode", async (req, res) => { 
+//   try {
+//     const id_kode = parseInt(req.params.id_kode);
+//     const warnaCMYK = ["Cyan", "Magenta", "Yellow", "Black"];
 
-    const dataWarna = warnaCMYK.map(warna => ({
-      warna,
-      quantity: 0,
-      id_kode
-    }));
+//     const dataWarna = warnaCMYK.map(warna => ({
+//       warna,
+//       quantity: 0,
+//       id_kode
+//     }));
 
-    await db.tb_warna.createMany({ data: dataWarna });
+//     await db.tb_warna.createMany({ data: dataWarna });
 
-    res.send("Warna default CMYK berhasil ditambahkan");
-  } catch (error) {
-    console.log("error", error);
-    res.status(500).send({ "internal server error": error });
-  }
-})
+//     res.send("Warna default CMYK berhasil ditambahkan");
+//   } catch (error) {
+//     console.log("error", error);
+//     res.status(500).send({ "internal server error": error });
+//   }
+// })
 
 
 app.listen(port, () => {

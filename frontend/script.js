@@ -7,7 +7,7 @@ let warnaList = [];
 // 1. Load Ink Types
 async function loadInkTypes() {
     try {
-        const res = await fetch('http://192.168.179.144:3000/kode');
+        const res = await fetch('http://localhost:3000/kode');
         const json = await res.json();
         const inkTypes = json.data;
 
@@ -33,7 +33,7 @@ inkTypeSelect.addEventListener('change', async function () {
     }
 
     try {
-        const res = await fetch(`http://192.168.179.144:3000/warna/${idKode}`);
+        const res = await fetch(`http://localhost:3000/warna/${idKode}`);
         const json = await res.json();
         warnaList = json.result; // 🛠️ perbaikan di sini!
 
@@ -61,7 +61,7 @@ async function updateStock() {
     }
 
     try {
-        const res = await fetch('http://192.168.179.144:3000/warna', {
+        const res = await fetch('http://localhost:3000/warna', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

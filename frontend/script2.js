@@ -82,7 +82,7 @@ myHeaders.append("Content-Type", "application/json");
   redirect: "follow"
 };
 
-fetch("http://192.168.179.144:3000/minus", requestOptions)
+fetch("http://localhost:3000/minus", requestOptions)
   .then((response) => {if(response.ok) alert("Permintaan Akan Segera Diproses")})
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
@@ -95,7 +95,7 @@ let warnaList = [];
 // 1. Load Ink Types
 async function loadInkTypes() {
     try {
-        const res = await fetch('http://192.168.179.144:3000/kode');
+        const res = await fetch('http://localhost:3000/kode');
         const json = await res.json();
         const inkTypes = json.data;
 
@@ -122,7 +122,7 @@ inkTypeSelect.addEventListener('change', async function () {
     }
 
     try {
-        const res = await fetch(`http://192.168.179.144:3000/warna/${idKode}`);
+        const res = await fetch(`http://localhost:3000/warna/${idKode}`);
         const json = await res.json();
         warnaList = json.result; 
 
@@ -140,17 +140,21 @@ inkTypeSelect.addEventListener('change', async function () {
 });
 
 function sendwhatsapp() {
-      const phonenumber = "+62895401473163";
+
+      
+      const phonenumber = "+6282232099161";
 
       const name = userName.value
       const inkType = inkTypeSelect.value
       const inkColor = inkColorSelect.value
-      const quantity = quantity.value
-      const divisi = divisi
+      const jmlh = quantity.value
+      const divisi = getParameterByName("divisi");
       const date = document.getElementById("dateUser").value = formatDate
       const time = document.getElementById("timeUser").value = timefrotmat
 
-      if (!name || !printer || !inkColor || !quantity || !date || !time) {
+      console.log(jmlh);
+      
+      if (!name || !divisi || !inkType || !inkColor || !jmlh || !date || !time) {
         alert("Please fill out all fields before sending.");
         return;
       }
@@ -159,33 +163,7 @@ function sendwhatsapp() {
         `*Name:* ${name}%0a` +
         `*Type:* ${inkType}%0a` +
         `*Ink Color:* ${inkColor}%0a` +
-        `*Quantity:* ${quantity}%0a` +
-        `*Date:* ${date}%0a` +
-        `*Time:* ${time}`;
-
-      window.open(url, '_blank').focus();
-    }
-
-    function sendwhatsapp() {
-      const phonenumber = "+62895401473163";
-
-      const name = document.getElementById('userName').value;
-      const printer = document.getElementById('printerType').value;
-      const inkColor = document.getElementById('inkColor').value;
-      const quantity = document.getElementById('quantity').value;
-      const date = document.getElementById('date').value;
-      const time = document.getElementById('time').value;
-
-      if (!name || !printer || !inkColor || !quantity || !date || !time) {
-        alert("Please fill out all fields before sending.");
-        return;
-      }
-
-      const url = `https://wa.me/${phonenumber}?text=` +
-        `*Name:* ${name}%0a` +
-        `*Type:* ${printer}%0a` +
-        `*Ink Color:* ${inkColor}%0a` +
-        `*Quantity:* ${quantity}%0a` +
+        `*Quantity:* ${jmlh}%0a` +
         `*Date:* ${date}%0a` +
         `*Time:* ${time}`;
 
