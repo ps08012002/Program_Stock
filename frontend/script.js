@@ -52,7 +52,7 @@ inkTypeSelect.addEventListener('change', async function () {
 
 // 3. Update Stock
 async function updateStock() {
-    const idWarna = inkColorSelect.value;
+    const idWarna = parseInt(inkColorSelect.value);
     const qty = parseInt(quantityInput.value);
 
     if (!idWarna || isNaN(qty) || qty <= 0) {
@@ -61,19 +61,26 @@ async function updateStock() {
     }
 
     try {
-        const res = await fetch('http://localhost:3000/warna', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id: parseInt(idWarna), quantity: qty }),
-        });
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
-        if (res.ok) {
-            alert('Stock berhasil diupdate!');
-        } else {
-            alert('Gagal mengupdate stock.');
-        }
+const raw = JSON.stringify({
+  "id": idWarna,
+  "qty": qty
+});
+
+const requestOptions = {
+  method: "PUT",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("http://localhost:3000/plus", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+
+  alert('Jumlah Tinta Sudah Diupdate');
     } catch (err) {
         console.error('Error saat update stock:', err);
     }
