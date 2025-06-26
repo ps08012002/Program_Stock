@@ -197,16 +197,13 @@
 			]
 		},
 		{
-			"name": "Plus quantity",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
+			"name": "Plus quantity update",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"id\":1, \"qty\" : 8\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -214,7 +211,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/plus?id=2&qty=2",
+					"raw": "http://localhost:3000/plus",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -222,16 +219,6 @@
 					"port": "3000",
 					"path": [
 						"plus"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "2"
-						},
-						{
-							"key": "qty",
-							"value": "2"
-						}
 					]
 				}
 			},
@@ -244,7 +231,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \r\n  \"id\": 1, \"nama\": \"Putra\", \"kode_tinta\": \"001\", \"qty\": 2\r\n\r\n}",
+					"raw": "{\r\n  \r\n  \"id\": 1, \"nama\": \"Arra\", \"kode_tinta\": \"001\", \"qty\": 2, \"divisi\": \"IT\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -252,15 +239,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/minus/IT",
+					"raw": "http://localhost:3000/minus",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"minus",
-						"IT"
+						"minus"
 					]
 				}
 			},
