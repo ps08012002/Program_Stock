@@ -147,13 +147,14 @@ app.post("/minus", async(req, res) => { // minus stock by id and create report d
   }
 })
 
-app.get("/plus", async(req, res) => { // Plus Quantity by id
+app.put("/plus", async(req, res) => { // Plus Quantity by id
   try {
-    const {id, qty} = req.query 
-    console.log("req", req.query);
-    const plus = await db.tb_warna.findFirst({where : {id : parseInt(id)}})
-    const result = await db.tb_warna.update({where : {id : parseInt(id)}, data : {quantity : plus.quantity + parseInt(qty)}})
+    const {id, qty} = req.body
+    const plus = await db.tb_warna.findFirst({where : {id : id}})
+    const result = await db.tb_warna.update({where : {id : id}, data : {quantity : plus.quantity+qty}})
     res.send ({result})
+    console.log("Sukses");
+    
   } catch (error) {
       console.log("error", error);
     
