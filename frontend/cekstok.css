@@ -128,17 +128,18 @@ ul {
 }
 
 .wrapper h1 {
-  justify-self: center;
+    justify-self: center;
 }
 
 table {
-    border: 1px solid black;
+    border: 1px solid rgba(218, 105, 250, 0.537);
     border-radius: 10px;
     justify-self: center;
-    background-color: rgba(255, 255, 255, 0.11);
+    background-color: rgba(255, 255, 255, 0.297);
     width: 900px;
     padding: 10px;
     margin-bottom: 20px;
+    color: rgba(22, 6, 71);
 }
 
 td {
@@ -147,7 +148,24 @@ td {
     text-align: center;
 }
 
+.button-np {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    justify-self: center;
+}
+
+button {
+    width: 75px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(253, 110, 227, 0.537);
+    cursor: pointer;
+}
+
 #copyright {
-  width: 100%;
-  justify-items: center;
+    width: 100%;
+    justify-items: center;
+    color: rgba(22, 6, 71);
 }
