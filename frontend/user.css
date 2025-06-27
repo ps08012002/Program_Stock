@@ -5,7 +5,10 @@
 body {
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
-  background-color: rgb(233, 99, 99);
+  background-image: url('assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,7 +18,7 @@ body {
   width: 400px;
   margin: 80px auto;
   padding: 30px;
-  background: white;
+  background: rgba(255, 255, 255, 0.132);
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
@@ -62,7 +65,7 @@ input:focus, select:focus {
 button {
   width: 150px;
   padding: 12px;
-  background-color: #e91e63;
+  background-color: #e91e629e;
   color: white;
   font-size: 16px;
   border: none;
@@ -78,8 +81,8 @@ button:hover {
   width: 100%;
   text-align: center;
   padding: 20px 0;
-  background-color: white;
-  color: #333;
+  background-color: rgba(255, 255, 255, 0.185);
+  color: #ffffff;
   font-size: 14px;
   margin-top: auto;
 }
