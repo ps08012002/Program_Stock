@@ -145,7 +145,7 @@ app.post("/minus", async(req, res) => { // minus stock by id and create report d
     });
 
     res.json(createdReport);
-    // res.send("sukses");
+  
   } else {
     res.status(400).send("Stok tidak mencukupi atau kosong");
   }
@@ -171,10 +171,10 @@ app.put("/plus", async(req, res) => { // Plus Quantity by id
   }
 })
 
-app.get('/report', async (req, res) => { // Get Inktype Data
+app.get('/report', async (req, res) => { // Get report data
   try {
     const test = await db.tb_report.findMany()
-    res.send({"data": test})
+    res.send({test})
   } catch (error) {
     res.status(500).send("internal server error")
   }
