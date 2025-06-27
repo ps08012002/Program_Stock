@@ -13,7 +13,7 @@ const corsOptions = {
 app.use(express.json())
 
 
-app.get('/kode', async (req, res) => { // Get All Data
+app.get('/kode', async (req, res) => { // Get Inktype Data
   try {
     const test = await db.tb_kode.findMany()
     res.send({"data": test})
@@ -88,7 +88,7 @@ app.delete("/warna", async(req, res) => { // Deleted Warna & Quantity by id
   }
 })
 
-app.get('/warna/:id', async (req, res) => { // Get All Data
+app.get('/warna/:id', async (req, res) => { // Get All inkcolor Data
   try {
     const {id} = req.params
     const result = await db.tb_warna.findMany({where : {id_kode : parseInt(id) }})
@@ -98,9 +98,20 @@ app.get('/warna/:id', async (req, res) => { // Get All Data
   }
 })
 
+app.get('/all/:id', async (req, res) => { // Get All Data include ink type and ink color
+  try {
+    const {id} = req.params
+    const inktype = await db.tb_kode.findMany({where : {id : parseInt(id) }})
+    const inkcolor = await db.tb_warna.findMany({where : {id_kode : parseInt(id) }})
+    res.send({inkcolor, inktype})
+  } catch (error) {
+    res.status(500).send("internal server error")
+  }
+})
+
 app.post("/minus", async(req, res) => { // minus stock by id and create report data
   try {
- const id = req.body.id;
+ const {id, kode} = req.body;
   const qty = parseInt(req.body.qty); 
 
   const cari = await db.tb_warna.findFirst({
@@ -109,6 +120,14 @@ app.post("/minus", async(req, res) => { // minus stock by id and create report d
       id: true,
       warna: true,
       quantity: true
+    }
+  });
+
+    const cari2 = await db.tb_kode.findFirst({
+    where: { id: parseInt(kode) },
+    select: {
+      id: true,
+      kode_tinta: true,
     }
   });
 
@@ -124,11 +143,11 @@ app.post("/minus", async(req, res) => { // minus stock by id and create report d
       }
     });
 
-    await db.tb_report.create({
+    const createdReport = await db.tb_report.create({
       data: {
         nama: req.body.nama,
         divisi: req.body.divisi, 
-        kode_tinta: req.body.kode_tinta,
+        kode_tinta: cari2.kode_tinta,
         warna: cari.warna,
         request: qty,
         sisa: result.quantity,
@@ -136,7 +155,8 @@ app.post("/minus", async(req, res) => { // minus stock by id and create report d
       }
     });
 
-    res.send("sukses");
+    res.json(createdReport);
+    // res.send("sukses");
   } else {
     res.status(400).send("Stok tidak mencukupi atau kosong");
   }
@@ -162,40 +182,14 @@ app.put("/plus", async(req, res) => { // Plus Quantity by id
   }
 })
 
-// app.get("/ink", async (req, res) => {
-//   try {
-//     const data = await db.tb_kode.findMany({
-//       include: {
-//         tb_warna: true
-//       }
-//     })
-//     res.send(data)
-//   } catch (error) {
-//     console.log("error", error)
-//     res.status(500).send({"internal server error": error})
-//   }
-// })
-
-// app.post("/warna/default/:id_kode", async (req, res) => { 
-//   try {
-//     const id_kode = parseInt(req.params.id_kode);
-//     const warnaCMYK = ["Cyan", "Magenta", "Yellow", "Black"];
-
-//     const dataWarna = warnaCMYK.map(warna => ({
-//       warna,
-//       quantity: 0,
-//       id_kode
-//     }));
-
-//     await db.tb_warna.createMany({ data: dataWarna });
-
-//     res.send("Warna default CMYK berhasil ditambahkan");
-//   } catch (error) {
-//     console.log("error", error);
-//     res.status(500).send({ "internal server error": error });
-//   }
-// })
-
+app.get('/report', async (req, res) => { // Get Inktype Data
+  try {
+    const test = await db.tb_report.findMany()
+    res.send({"data": test})
+  } catch (error) {
+    res.status(500).send("internal server error")
+  }
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

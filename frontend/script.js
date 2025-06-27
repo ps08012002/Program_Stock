@@ -2,7 +2,7 @@ const inkTypeSelect = document.getElementById('inkType');
 const inkColorSelect = document.getElementById('inkColor');
 const quantityInput = document.getElementById('quantity');
 
-let warnaList = [];
+//let warnaList = [];
 
 // 1. Load Ink Types
 async function loadInkTypes() {

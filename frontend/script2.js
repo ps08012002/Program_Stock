@@ -2,6 +2,7 @@ const inkTypeSelect = document.getElementById('InkTypeUser');
 const inkColorSelect = document.getElementById('inkColorUser');
 const quantityInput = document.getElementById('quantity');
 const userName = document.getElementById('userName');
+let latestReportData = null;
 
 function getParameterByName(name) {
   const url = window.location.search;
@@ -59,13 +60,16 @@ quantity.addEventListener('change' ,()=>{
 
 //send report adn minus quantity
 console.log(getParameterByName('divisi'));
+console.log(inkColorSelect.value);
+
 
 async function onSubmit() {
+
   const divisi = getParameterByName("divisi");
   const raw = JSON.stringify({
-  "id": inkTypeSelect.value,
+  "id": inkColorSelect.value,
   "nama": userName.value,
-  "kode_tinta": inkColorSelect.value,
+  "kode": inkTypeSelect.value,
   "qty": quantity.value,
   "divisi": divisi
 });
@@ -83,7 +87,8 @@ myHeaders.append("Content-Type", "application/json");
 };
 
 fetch("http://localhost:3000/minus", requestOptions)
-  .then((response) => {if(response.ok) alert("Permintaan Akan Segera Diproses")})
+  .then(async(response) => {if(response.ok) alert("Permintaan Akan Segera Diproses"); const data = await response.json();
+      latestReportData = data; sendwhatsapp()})
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
   
@@ -139,20 +144,33 @@ inkTypeSelect.addEventListener('change', async function () {
     }
 });
 
-function sendwhatsapp() {
+async function getData() {
+    const id = parseInt(inkTypeSelect.value)
+const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+};
 
-      
-      const phonenumber = "+6282232099161";
+   const response = await fetch(`http://localhost:3000/all/${id}`, requestOptions);
+  return await response.json();
+  // .then((response) => response.text())
+  // .then((result) => console.log(result))
+  // .catch((error) => console.error(error));
+}
+
+ async function sendwhatsapp() {
+  
+      const phonenumber = "0895401473163";
 
       const name = userName.value
-      const inkType = inkTypeSelect.value
-      const inkColor = inkColorSelect.value
+      const inkType = latestReportData?.kode_tinta
+      const inkColor = latestReportData?.warna
       const jmlh = quantity.value
       const divisi = getParameterByName("divisi");
-      const date = document.getElementById("dateUser").value = formatDate
-      const time = document.getElementById("timeUser").value = timefrotmat
+      const date = document.getElementById("dateUser").value
+      const time = document.getElementById("timeUser").value 
 
-      console.log(jmlh);
+      console.log(latestReportData?.kode_tinta);
       
       if (!name || !divisi || !inkType || !inkColor || !jmlh || !date || !time) {
         alert("Please fill out all fields before sending.");
