@@ -173,7 +173,13 @@ app.put("/plus", async(req, res) => { // Plus Quantity by id
 
 app.get('/report', async (req, res) => { // Get report data
   try {
-    const test = await db.tb_report.findMany()
+    const{page, per_page} = req.query
+    const limit = +(per_page??10)
+    const offset = (+(page??1)-1) * limit
+
+    const test = await db.tb_report.findMany({
+      take : limit, skip : offset
+    })
     res.send({test})
   } catch (error) {
     res.status(500).send("internal server error")
@@ -182,17 +188,23 @@ app.get('/report', async (req, res) => { // Get report data
 
 app.get('/all', async (req, res) => { // Get All Data include ink type and ink color
   try {
+    const{page, per_page} = req.query
+    const limit = +(per_page??10)
+    const offset = (+(page??1)-1) * limit
+    const total = await db.tb_kode.count()
+
     const inktype = await db.tb_kode.findMany({
       include : { 
         tb_warna : true
-      }})
+      },take : limit, skip : offset})
       
-    res.send({inktype})
+    res.send({inktype, total : total})
   } catch (error) {
     console.log("test");
     res.status(500).send("internal server error")
   }
 })
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
