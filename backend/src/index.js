@@ -98,17 +98,6 @@ app.get('/warna/:id', async (req, res) => { // Get All inkcolor Data
   }
 })
 
-app.get('/all/:id', async (req, res) => { // Get All Data include ink type and ink color
-  try {
-    const {id} = req.params
-    const inktype = await db.tb_kode.findMany({where : {id : parseInt(id) }})
-    const inkcolor = await db.tb_warna.findMany({where : {id_kode : parseInt(id) }})
-    res.send({inkcolor, inktype})
-  } catch (error) {
-    res.status(500).send("internal server error")
-  }
-})
-
 app.post("/minus", async(req, res) => { // minus stock by id and create report data
   try {
  const {id, kode} = req.body;
@@ -191,6 +180,21 @@ app.get('/report', async (req, res) => { // Get Inktype Data
   }
 })
 
+app.get('/all', async (req, res) => { // Get All Data include ink type and ink color
+  try {
+    const inktype = await db.tb_kode.findMany({
+      include : { 
+        tb_warna : true
+      }})
+      
+    res.send({inktype})
+  } catch (error) {
+    console.log("test");
+    res.status(500).send("internal server error")
+  }
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
