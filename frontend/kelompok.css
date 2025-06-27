@@ -1,7 +1,10 @@
 html, body{
   margin: 0;
   font-family:'Times New Roman', Times, serif;
-  background-color: rgb(233, 99, 99);
+  background-image: url('assets/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100%;
 }
 
@@ -15,7 +18,11 @@ nav {
   justify-content: space-between;
   align-items: center;
   color: black;
-  background-color: bisque;
+  background: linear-gradient(
+  to right,
+  rgba(22, 6, 71, 0.537),
+  rgba(218, 105, 250, 0.537),
+  rgb(253, 110, 227, 0.537));
   border-radius: 10px;
 }
 
@@ -24,13 +31,46 @@ nav {
   height: 40px;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    padding-right: 20px;
+}
+
+.ct-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.ct-menu > li > a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.ct-menu > li:hover > a {
+    color: #ffffff;
+}
+
 .container {
-  max-width: 600px;
-  width: 100%;
-  justify-self: center;
-  align-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
+    width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, 0.004);
+    border-radius: 60px;
+    background-color: #f9f9f94d;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+    justify-self: center;
+    align-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 40px;
 }
 
 h1 {
@@ -50,7 +90,7 @@ h1 {
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #000;
+  border: 2px solid #f4f1f1;
   margin-right: 15px;
 }
 
@@ -72,4 +112,5 @@ h1 {
 #copyright {
   width: 100%;
   justify-items: center;
+  color: white
 }

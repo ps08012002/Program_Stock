@@ -1,7 +1,10 @@
 html, body{
     margin: 0;
     font-family:'Times New Roman', Times, serif;
-    background-color: rgb(233, 99, 99);
+    background-image: url('assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100%;
 }
 
@@ -15,7 +18,11 @@ nav {
     justify-content: space-between;
     align-items: center;
     color: black;
-    background-color: bisque;
+    background: linear-gradient(
+    to right,
+    rgba(22, 6, 71, 0.537),
+    rgba(218, 105, 250, 0.537),
+    rgb(253, 110, 227, 0.537));
     border-radius: 10px;
 }
 
@@ -24,15 +31,39 @@ nav {
     height: 40px;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    padding-right: 20px;
+}
+
+.ct-menu {
+    display: flex;
+    flex-direction: row;
+}
+
+.ct-menu > li > a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.ct-menu > li:hover > a {
+    color: #ffffff;
+}
+
 .form-container {
     width: 500px;
     height: auto;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgba(255, 255, 255, 0);
     border-radius: 10px;
     background-color: #f9f9f94d;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     margin-top: 100px;
     margin-bottom: 150px;
     justify-self: center;
@@ -82,7 +113,7 @@ input {
 }
 
 select:focus, input:focus {
-    border-color: #eb22a1;
+    border-color: 253, 110, 227;
 }
 
 button {
@@ -97,10 +128,11 @@ button {
 }
 
 button:hover {
-    background-color: #eb22a1;
+    background-color: rgb(253, 110, 227, 0.537);
 }
 
 #copyright {
     width: 100%;
     justify-items: center;
+    color: white
 }
