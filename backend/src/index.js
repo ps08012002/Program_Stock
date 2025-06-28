@@ -174,13 +174,14 @@ app.put("/plus", async(req, res) => { // Plus Quantity by id
 app.get('/report', async (req, res) => { // Get report data
   try {
     const{page, per_page} = req.query
-    const limit = +(per_page??10)
+    const limit = +(per_page??1)
     const offset = (+(page??1)-1) * limit
+    const total = await db.tb_report.count()
 
     const test = await db.tb_report.findMany({
       take : limit, skip : offset
     })
-    res.send({test})
+    res.send({test, total : total})
   } catch (error) {
     res.status(500).send("internal server error")
   }
@@ -189,7 +190,7 @@ app.get('/report', async (req, res) => { // Get report data
 app.get('/all', async (req, res) => { // Get All Data include ink type and ink color
   try {
     const{page, per_page} = req.query
-    const limit = +(per_page??10)
+    const limit = +(per_page??1)
     const offset = (+(page??1)-1) * limit
     const total = await db.tb_kode.count()
 

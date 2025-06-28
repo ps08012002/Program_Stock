@@ -87,8 +87,8 @@ myHeaders.append("Content-Type", "application/json");
 };
 
 fetch("http://localhost:3000/minus", requestOptions)
-  .then(async(response) => {if(response.ok) alert("Permintaan Akan Segera Diproses"); const data = await response.json();
-      latestReportData = data; sendwhatsapp()})
+  .then(async(response) => {if(response.ok) alert("Permintaan Akan Di Proses !!!"); const data = await response.json();
+      latestReportData = data; sendMessage()})
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
   
@@ -153,15 +153,12 @@ const requestOptions = {
 
    const response = await fetch(`http://localhost:3000/all/${id}`, requestOptions);
   return await response.json();
-  // .then((response) => response.text())
-  // .then((result) => console.log(result))
-  // .catch((error) => console.error(error));
 }
 
- async function sendwhatsapp() {
-  
-      const phonenumber = "0895401473163";
-
+async function sendMessage(){
+   const token = '8125474717:AAH9OH8r1FSloByJcP1Cs0VlmsPZszr4K8U';
+  const chat_id = '1812654340';
+    
       const name = userName.value
       const inkType = latestReportData?.kode_tinta
       const inkColor = latestReportData?.warna
@@ -177,15 +174,35 @@ const requestOptions = {
         return;
       }
 
-      const url = `https://wa.me/${phonenumber}?text=` +
-        `*Name:* ${name}%0a` +
-        `*Type:* ${inkType}%0a` +
-        `*Ink Color:* ${inkColor}%0a` +
-        `*Quantity:* ${jmlh}%0a` +
-        `*Date:* ${date}%0a` +
-        `*Time:* ${time}`;
+      const message = 
+      
+      `Haloo, Ada Permintaan Nih 
 
-      window.open(url, '_blank').focus();
-    }
+      Name: ${name}
+      Divisi : ${divisi}
+      Ink Type: ${inkType}
+      Ink Color: ${inkColor}
+      Quantity: ${jmlh}
+      Date: ${date}
+      Time: ${time}
+      `
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        chat_id: chat_id,
+        text: message
+      })
+    })
+    .then(res => res.json())
+    // .then(data => {
+    //   alert('Pesan terkirim ke Telegram');
+    // })
+    .catch(err => {
+      alert('Gagal mengirim pesan');
+      console.error(err);
+    });
+}
 // Jalankan saat halaman dimuat
 window.onload = loadInkTypes;

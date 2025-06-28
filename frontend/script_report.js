@@ -1,14 +1,27 @@
-(async () => {
+  let currentPage = 1;
+  let totalPages = 1
 
-    const tbody = document.getElementById('tbody');
+  async function fetchData(page) {
+    try {
+      const response = await fetch(`http://localhost:3000/report?page=${currentPage}&per_page=5`);
+      const data = await response.json();
+      displayData(data);
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
+  }
 
- await fetch("http://localhost:3000/report")
-  .then((response) => response.json())
-  .then((result) => {
-    console.log(result.test);
+  function displayData(data) {
     
-    if (result.test) {
-        result.test.forEach((value, index) => {
+    const tbody = document.getElementById('tbody');
+    const report = data.test;
+    totalPages = data.total/5;
+    tbody.innerHTML = "";
+
+    console.log(report);
+    
+    if (report) {
+        report.forEach((value, index) => {
 
             const tanggal = new Date(value.date * 1000)
 
@@ -42,14 +55,23 @@
             tbody.appendChild(row);
         })
     }
-  })
-  .catch((error) => console.error(error));
-            // "id": 1,
-            // "nama": "Putra Sangaji",
-            // "kode_tinta": "001",
-            // "warna": "Cyan",
-            // "divisi": "IT",
-            // "request": 1,
-            // "sisa": 9,
-            // "date": 1751029864
-})();
+  }
+  
+  function nextPage() {
+    if (currentPage < totalPages) {
+      
+      currentPage++;
+      fetchData(currentPage);
+    }
+  }
+  
+  function prevPage() {
+    if (currentPage > 1) {
+      
+      currentPage--;
+      fetchData(currentPage);
+    }
+  }
+  
+  fetchData(currentPage);
+  
