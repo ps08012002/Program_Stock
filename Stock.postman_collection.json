@@ -197,56 +197,99 @@
 			]
 		},
 		{
-			"name": "Plus quantity update",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\":1, \"qty\" : 8\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Update Stock",
+			"item": [
+				{
+					"name": "Plus quantity update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1, \"qty\" : 8\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/plus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"plus"
+							]
 						}
-					}
+					},
+					"response": []
 				},
+				{
+					"name": "Minus quantity and create report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n  \"id\": 1, \"nama\": \"Arra\", \"kode_tinta\": \"001\", \"qty\": 2, \"divisi\": \"IT\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/minus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"minus"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All Report",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/plus",
+					"raw": "http://localhost:3000/report",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"plus"
+						"report"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Minus quantity and create report",
+			"name": "Get all Data Include InkType & InkColor",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \r\n  \"id\": 1, \"nama\": \"Arra\", \"kode_tinta\": \"001\", \"qty\": 2, \"divisi\": \"IT\"\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "http://localhost:3000/minus",
+					"raw": "http://localhost:3000/report",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"minus"
+						"report"
 					]
 				}
 			},
