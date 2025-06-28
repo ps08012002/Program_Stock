@@ -60,11 +60,6 @@
 - Download dan instal MYSQL : <br>https://dev.mysql.com/downloads/file/?id=541637
 - Rename file didalam **/backend/.env.example** menjadi **.env**
 
-
-=========================
-.env Example     
-=========================
-
 Server Configuration
 
 Username      = root (default)                                                       
