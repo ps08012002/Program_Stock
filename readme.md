@@ -61,7 +61,7 @@
 - Rename file didalam **/backend/.env.example** menjadi **.env**
 
 ```bash 
-    Server Configuration
+    Server Configuration For .env
     Username      = root (default)                                                       
     Password      = Your Password                                                        
     Server        = localhost (default)                                                  
