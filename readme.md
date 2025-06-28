@@ -60,13 +60,15 @@
 - Download dan instal MYSQL : <br>https://dev.mysql.com/downloads/file/?id=541637
 - Rename file didalam **/backend/.env.example** menjadi **.env**
 
-Server Configuration
-
-Username      = root (default)                                                       
-Password      = Your Password                                                        
-Server        = localhost (default)                                                  
-Port          = 3306 (default)                                                       
-Nama_Database = Your Database Name                                                                       
+```bash 
+    Server Configuration
+    Username      = root (default)                                                       
+    Password      = Your Password                                                        
+    Server        = localhost (default)                                                  
+    Port          = 3306 (default)                                                       
+    Nama_Database = Your Database Name
+```
+                                                                       
 
 
 ## 🚀 Starting Program
