@@ -62,7 +62,7 @@
 
 
 **======================**
-**     .env Example**
+      .env Example     
 **======================**
 
 Server Configuration
