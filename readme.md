@@ -61,11 +61,11 @@
 - Rename file didalam **/backend/.env.example** menjadi **.env**
 
 
- ======================
- .env Example
- ======================
+**======================**
+**     .env Example**
+**======================**
 
- Server Configuration
+Server Configuration
 
 Username      = root (default)                                                       
 Password      = Your Password                                                        
