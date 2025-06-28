@@ -61,9 +61,9 @@
 - Rename file didalam **/backend/.env.example** menjadi **.env**
 
 
-**======================**
-      .env Example     
-**======================**
+**=========================**
+        .env Example     
+**=========================**
 
 Server Configuration
 
