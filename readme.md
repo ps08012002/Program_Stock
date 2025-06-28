@@ -59,17 +59,24 @@
 ### 3. Create Database
 - Download dan instal MYSQL : <br>https://dev.mysql.com/downloads/file/?id=541637
 - Rename file didalam **/backend/.env.example** menjadi **.env**
-- Rubah isi didalam file sesuai petunjuk
-- Ketikkan command :
-```bash 
-    npx prisma db push
-```
+
+shell
+# ======================
+# .env Example
+# ======================
+
+# Server Configuration
+
+Username      = root (default)                                                       # Sesuaikan dengan Username database
+Password      = Your Password                                                        # Seuaikan dengan Password database
+Server        = localhost (default)                                                  # Ip address server database
+Port          = 3306 (default)                                                       # Port server database
+Nama_Database = Your Database Name                                                   # Database name                       
+
 
 ## 🚀 Starting Program
-- Ketikkan command :
+- Untuk pengguna WINDOWS saat pertama kalai menjalankan ketikkan command :
 ```bash 
-    cd backend
-
-    npm start
+    start.bat
 ```
 ### Built with ❤️ by Kelompoke Arek Arek
