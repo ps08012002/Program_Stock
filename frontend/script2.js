@@ -157,7 +157,7 @@ const requestOptions = {
 
 async function sendMessage(){
    const token = '8125474717:AAH9OH8r1FSloByJcP1Cs0VlmsPZszr4K8U';
-  const chat_id = '-1002776606224' //id tele pribadi'1812654340';
+  const chat_id = '-1002776606224';
     
       const name = userName.value
       const inkType = latestReportData?.kode_tinta
