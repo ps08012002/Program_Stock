@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="index.css">
-        <title>Website Update Stock</title>
-    </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <title>Website Update Stock</title>
+</head>
+<body>
+  <header>
+    <nav class="navigate">
+      <a href="update.html">
+        <img class="lt-menu" src="assets/kelompok2.png" alt="Logo Kelompok 2" />
+      </a>
+      <ul class="ct-menu">
+        <li><a href="cekstok.html">Cek Stok</a></li>
+        <li><a href="report.html">Report</a></li>
+        <li><a href="kelompok.html">Daftar Kelompok</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <body>
-        <header>
-            <nav class="navigate">
-                <a href="update.html">
-                    <img class="lt-menu" src="assets/kelompok2.png" alt="">
-                </a>
-                <ul class="ct-menu">
-                    <li><a href="cekstok.html">Cek Stok</a></li>
-                    <li><a href="report.html">Report</a></li>
-                    <li><a href="kelompok.html">Daftar Kelompok</a></li>
-                </ul>
-            </nav>
-        </header>
+  <main id="main">
+    <div class="wrapper">
+      <div class="form-container">
+        <h2>Update Stock</h2>
 
-        <div id="main">
-            <div class="wrapper">
-                <div class="form-container">
-                    <h2>Update Stock</h2>
-                    <div class="form-group">
-                        <label for="Ink">Ink</label>
-                        <select id="inkType">
-                            <option value="">Select ink type</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="inkColor">Ink Color</label>
-                        <select id="inkColor">
-                            <option value="">Select ink type first</option>
-                        </select>
-                    </div>
-                        <div class="form-group">
-                    <label for="quantity">Quantity</label>
-                    <input type="number" id="quantity" value="1" min="1" />
-                    </div>
-                    <button onClick="updateStock()">Update Stock</button>
-                </div>
-            </div>
-        </div> 
-        <div id="copyright">
-            <div class="wrapper">
-                &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
-            </div>
+        <div class="form-group">
+          <label for="inkType">Ink</label>
+          <select id="inkType">
+            <option value="">Select ink type</option>
+          </select>
         </div>
 
-        <script src="script.js"></script>
-    </body>
+        <div class="form-group">
+          <label for="inkColor">Ink Color</label>
+          <select id="inkColor">
+            <option value="">Select ink type first</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" value="1" min="1" />
+        </div>
+
+        <div class="btn-container">
+          <button onclick="updateStock()">Update Stock</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="copyright">
+    <div class="wrapper">
+      &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>

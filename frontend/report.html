@@ -1,56 +1,58 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
-        <link rel="stylesheet" href="report.css">
-        <title>Website Report Data</title>
-    </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="report.css" />
+  <title>Website Report Data</title>
+</head>
 
-    <body>
-        <header>
-            <nav class="navigate">
-                <a href="update.html">
-                    <img class="lt-menu" src="assets/kelompok2.png" alt="">
-                </a>
-                <ul class="ct-menu">
-                    <li><a href="cekstok.html">Cek Stok</a></li>
-                    <li><a href="kelompok.html">Daftar Kelompok</a></li>
-                </ul>
-            </nav>
-        </header>
+<body>
+  <header>
+    <nav class="navigate">
+      <a href="update.html">
+        <img class="lt-menu" src="assets/kelompok2.png" alt="Logo Kelompok 2" />
+      </a>
+      <ul class="ct-menu">
+        <li><a href="cekstok.html">Cek Stok</a></li>
+        <li><a href="kelompok.html">Daftar Kelompok</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <div id="main">
-            <div class="wrapper">
-                <h1>Report</h1>
-                <div class="tabel">
-                    <table boder="1" cellpadding="10">
-                        
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>Divisi</th>
-                            <th>Ink Type</th>
-                            <th>Ink Color</th>
-                            <th>Quantity</th>
-                            <th>Tanggal</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbody"></tbody>
-                    </table>
-                </div>
-                <div class="button-np"> 
-                    <button onclick="prevPage()">Previous</button>
-                    <button onclick="nextPage()">Next</button>  
-                </div>
-            </div>    
-        </div>
-        <div id="copyright">
-            <div class="wrapper">
-                &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
-            </div>
-        </div>
-        <script src="script_report.js"></script>
-    </body>
+  <main id="main">
+    <div class="wrapper">
+      <h1>Report</h1>
+      <div class="tabel">
+        <table cellpadding="10">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Nama</th>
+              <th>Divisi</th>
+              <th>Ink Type</th>
+              <th>Ink Color</th>
+              <th>Quantity</th>
+              <th>Tanggal</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="button-np">
+        <button onclick="prevPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
+      </div>
+    </div>
+  </main>
+
+  <footer id="copyright">
+    <div class="wrapper">
+      &copy; 2025. <b>Kelompok 2.</b> All Rights Reserved.
+    </div>
+  </footer>
+
+  <script src="script_report.js"></script>
+</body>
 </html>

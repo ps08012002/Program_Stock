@@ -1,138 +1,162 @@
-html, body{
+* {
+    box-sizing: border-box;
+  }
+  
+  html, body {
     margin: 0;
-    font-family:'Times New Roman', Times, serif;
-    background-image: url('assets/bg.jpg');
+    font-family: 'Times New Roman', Times, serif;
+    background: linear-gradient(135deg, #e0f7fa, #fce4ec); /* pastel gradasi */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100%;
-}
-
-nav {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #000000;
+  }
+  
+  /* Navbar */
+  nav {
     display: flex;
     margin: 10px;
-    padding-right: 15px;
-    padding-left: 10px;
-    width: auto;
-    max-width: 100%;
+    padding: 10px 15px;
     justify-content: space-between;
     align-items: center;
-    color: black;
-    background: linear-gradient(
-    to right,
-    rgba(22, 6, 71, 0.537),
-    rgba(218, 105, 250, 0.537),
-    rgb(253, 110, 227, 0.537));
-    border-radius: 10px;
-}
-
-.navigate img {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    color: #000000;
+    border-radius: 12px;
+  }
+  
+  /* Logo */
+  .navigate img {
     width: 40px;
     height: 40px;
-}
-
-ul {
+  }
+  
+  /* Menu */
+  ul {
     margin: 0;
     padding: 0;
     list-style: none;
-}
-
-li {
+  }
+  
+  li {
     padding-right: 20px;
-}
-
-.ct-menu {
+  }
+  
+  .ct-menu {
     display: flex;
     flex-direction: row;
-}
-
-.ct-menu > li > a {
+  }
+  
+  .ct-menu > li > a {
     color: #000000;
     text-decoration: none;
-}
-
-.ct-menu > li:hover > a {
-    color: #ffffff;
-}
-
-.form-container {
+    font-weight: bold;
+  }
+  
+  .ct-menu > li:hover > a {
+    color: #f06292;
+  }
+  
+  /* Form Container */
+  .form-container {
     width: 500px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0);
-    border-radius: 10px;
-    background-color: #f9f9f94d;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    margin-top: 100px;
-    margin-bottom: 150px;
-    justify-self: center;
-}
-
-.form-container h2 {
-    align-self: center;
-    font-size: 30px;
+    background-color: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 100px auto 150px auto;
+    padding: 30px;
+  }
+  
+  /* Heading */
+  .form-container h2 {
+    text-align: center;
+    font-size: 28px;
     font-weight: bold;
     margin-bottom: 20px;
-}
-
-.form-group {
+    color: #000000;
+  }
+  
+  /* Form group */
+  .form-group {
     margin-bottom: 20px;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-label {
-    display: flex;
+  }
+  
+  /* Label */
+  label {
+    display: block;
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    color: #000000;
+  }
+  
+  /* Select */
+  select {
     width: 100%;
     padding: 10px 12px;
-    border: 1px solid gray;
+    border: 1px solid #ce93d8;
     border-radius: 10px;
     outline: none;
-}
-
-option {
-    border: none;
-    border-radius: 10px;
-}
-
-input {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  option {
+    background-color: #ff0000;
+    color: #000000;
+  }
+  
+  /* Input */
+  input {
     width: 95%;
     padding: 10px 12px;
-    border: 1px solid gray;
+    border: 1px solid #ce93d8;
     border-radius: 10px;
-}
-
-select:focus, input:focus {
-    border-color: 253, 110, 227;
-}
-
-button {
+    color: #000000;
+    font-weight: bold;
+    background-color: #ffffff;
+  }
+  
+  select:focus, input:focus {
+    border-color: #f06292;
+  }
+  
+  /* Tombol Tengah */
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  button {
     width: 150px;
-    padding: 10px 12px;
-    margin-bottom: 20px;
-    align-self: center;
+    padding: 12px;
     border-radius: 10px;
     border: none;
-    background-color: rgb(255, 255, 255);
+    background-color: #f48fb1;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: rgb(253, 110, 227, 0.537);
-}
-
-#copyright {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #f06292;
+  }
+  
+  /* Footer */
+  #copyright {
     width: 100%;
-    justify-items: center;
-    color: white
-}
+    text-align: center;
+    padding: 15px 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #000000;
+    font-size: 14px;
+    margin-top: auto;
+  }
+  

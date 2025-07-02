@@ -1,99 +1,99 @@
-html, body{
+html, body {
   margin: 0;
-  font-family:'Times New Roman', Times, serif;
-  background-image: url('assets/bg.jpg');
+  font-family: 'Times New Roman', Times, serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec); /* Warna pastel cerah */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #000000;
 }
 
+/* Navbar */
 nav {
   display: flex;
   margin: 10px;
-  padding-right: 15px;
-  padding-left: 10px;
-  width: auto;
-  max-width: 100%;
+  padding: 10px 15px;
   justify-content: space-between;
   align-items: center;
-  color: black;
-  background: linear-gradient(
-  to right,
-  rgba(22, 6, 71, 0.537),
-  rgba(218, 105, 250, 0.537),
-  rgb(253, 110, 227, 0.537));
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  color: #000000;
+  border-radius: 12px;
 }
 
+/* Logo */
 .navigate img {
   width: 40px;
   height: 40px;
 }
 
+/* Menu */
 ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 li {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 
 .ct-menu {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .ct-menu > li > a {
-    color: #000000;
-    text-decoration: none;
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .ct-menu > li:hover > a {
-    color: #ffffff;
+  color: #f06292;
 }
 
+/* Container Kelompok */
 .container {
-    width: 500px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0.004);
-    border-radius: 60px;
-    background-color: #f9f9f94d;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    max-width: 600px;
-    width: 100%;
-    justify-self: center;
-    align-content: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding-left: 40px;
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* Judul */
 h1 {
   text-align: center;
   margin-bottom: 40px;
   font-size: 32px;
+  color: #000000;
 }
 
+/* Item Anggota */
 .member {
   display: flex;
   align-items: center;
   margin-bottom: 25px;
 }
 
+/* Foto Profil */
 .member img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #f4f1f1;
+  border: 2px solid #fce4ec;
   margin-right: 15px;
 }
 
+/* Info Anggota */
 .member-info {
   display: flex;
   flex-direction: column;
@@ -102,6 +102,7 @@ h1 {
 .member-info .name {
   font-weight: bold;
   font-size: 18px;
+  color: #000000;
 }
 
 .member-info .npm {
@@ -109,8 +110,13 @@ h1 {
   color: #555;
 }
 
+/* Footer */
 #copyright {
   width: 100%;
-  justify-items: center;
-  color: white
+  text-align: center;
+  padding: 15px 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #000000;
+  font-size: 14px;
+  margin-top: auto;
 }
