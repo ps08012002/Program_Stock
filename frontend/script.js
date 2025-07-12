@@ -7,7 +7,7 @@ const quantityInput = document.getElementById('quantity');
 // 1. Load Ink Types
 async function loadInkTypes() {
     try {
-        const res = await fetch('http://localhost:3001/kode');
+        const res = await fetch('http://localhost:3000/kode');
         const json = await res.json();
         const inkTypes = json.data;
 
@@ -33,7 +33,7 @@ inkTypeSelect.addEventListener('change', async function () {
     }
 
     try {
-        const res = await fetch(`http://localhost:3001/warna/${idKode}`);
+        const res = await fetch(`http://localhost:3000/warna/${idKode}`);
         const json = await res.json();
         warnaList = json.result; // 🛠️ perbaikan di sini!
 
@@ -76,7 +76,7 @@ const requestOptions = {
   redirect: "follow"
 };
 
-fetch("http://localhost:3001/plus", requestOptions)
+fetch("http://localhost:3000/plus", requestOptions)
   .then((response) => response.text())
   .then((result) => console.log(result))
 

@@ -3,7 +3,7 @@
 
   async function fetchData(page) {
     try {
-      const response = await fetch(`http://localhost:3001/all?page=${currentPage}&per_page=1`);
+      const response = await fetch(`http://localhost:3000/all?page=${currentPage}&per_page=1`);
       const data = await response.json();
       displayData(data);
     } catch (error) {
